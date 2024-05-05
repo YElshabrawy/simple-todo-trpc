@@ -24,5 +24,11 @@ export const posts = createTable(
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
-  })
+  }),
 );
+
+export const todos = createTable("todo", {
+  id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
+  content: text("content", { length: 256 }),
+  done: int("done", { mode: "boolean" }).default(false),
+});
